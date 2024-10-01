@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory Management</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" 
+    integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">
+    <link rel="stylesheet" href="./src/style.css"> 
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -32,10 +34,70 @@
         </div>
     </nav>
 
+    <div class="container mt-5 text-center" >
+        <div class="btn-group" role="group" aria-label="Inventory Actions">
+            <button type="button" class="btn btn-primary" onclick="togglePanel('viewInventoryPanel')">View All
+                Inventory</button>
+            <button type="button" class="btn btn-success" onclick="togglePanel('createInventoryPanel')">Create
+                Inventory</button>
+            <button type="button" class="btn btn-info" onclick="togglePanel('searchInventoryPanel')">Search
+                Inventory</button>
+        </div>
+    </div>
 
+    <!-- Panels -->
+    <div id="viewInventoryPanel" class="container panel-container" style="display:none;">
+        <h3>View All Inventory</h3>
+        <!-- Content for viewing inventory -->
+    </div>
+    <!-- Create Inventory Panel -->
+    <div id="createInventoryPanel" class="container panel-container" style="display:none;">
+        <h3>Create Inventory Item</h3>
+        <form id="createInventoryForm">
+            <div class="form-group">
+                <label for="itemName">Item Name</label>
+                <input type="text" class="form-control" id="itemName" placeholder="Enter item name">
+            </div>
+            <div class="form-group">
+                <label for="itemQuantity">Quantity</label>
+                <input type="number" class="form-control" id="itemQuantity" placeholder="Enter quantity">
+            </div>
+            <div class="form-group">
+                <label for="itemLocation">Location</label>
+                <input type="text" class="form-control" id="itemLocation" placeholder="Enter location">
+            </div>
+            <div class="form-group">
+                <label for="itemDescription">Description</label>
+                <textarea class="form-control" id="itemDescription" rows="3" placeholder="Enter description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="itemPrice">Price Per Item</label>
+                <input type="number" class="form-control" id="itemPrice" placeholder="Enter price per item">
+            </div>
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+    <div id="searchInventoryPanel" class="container panel-container">
+        <h3>Search Inventory</h3>
+        <form id="searchInventoryForm">
+            <div class="form-group">
+                <label for="searchName">Search by Name</label>
+                <input type="text" class="form-control" id="searchName" placeholder="Enter item name">
+            </div>
+            <div class="form-group">
+                <label for="searchId">Search by ID</label>
+                <input type="text" class="form-control" id="searchId" placeholder="Enter item ID">
+            </div>
+            <button type="submit" class="btn btn-info">Search</button>
+        </form>
+        <div id="searchResults">
+            <!-- Search results will be displayed here -->
+        </div>
+    </div>
     <script type="module" src="./src/auth.js"></script>
-
+    <script type="module" src="./src/inventory.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+0dF83LXx8H1lJ4K9JvAjOFstjFUEfCJxoM" crossorigin="anonymous"></script>
+    
 </body>
 </html>

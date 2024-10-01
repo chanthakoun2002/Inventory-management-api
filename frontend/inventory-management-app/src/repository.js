@@ -47,7 +47,7 @@ function registerUser(userData) {
 
 function logoutUser() {
     const token = sessionStorage.getItem('authToken');
-    console.log("Token retrieved from sessionStorage:", token);//for debugging
+    console.log("Token retrieved from sessionStorage:", token);//for debugging to check if token has been given correctly
 
     if (!token) {
         console.log("No token found, already logged out or never logged in.");
