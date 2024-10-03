@@ -7,6 +7,9 @@ const rateLimit = require("express-rate-limit");
 
 dotenv.config();
 
+const morgan = require('morgan');
+app.use(morgan('dev'));  // Logs all requests to the terminal
+
 const PORT = process.env.PORT;
 
 const userRoutes = require("./routes/userRoutes");

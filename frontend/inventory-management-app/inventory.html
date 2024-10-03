@@ -27,7 +27,9 @@
                     <a class="nav-link" href="./order.html">Orders</a>
                 </li>
             </ul>
+
         </div>
+        
         <div class="navbar-nav ml-auto">
             <span class="navbar-text" id="userID"></span>
             <button id="logoutButton" class="btn btn-danger ml-2" style="display:none;">Logout</button>
@@ -36,12 +38,9 @@
 
     <div class="container mt-5 text-center" >
         <div class="btn-group" role="group" aria-label="Inventory Actions">
-            <button type="button" class="btn btn-primary" onclick="togglePanel('viewInventoryPanel')">View All
-                Inventory</button>
-            <button type="button" class="btn btn-success" onclick="togglePanel('createInventoryPanel')">Create
-                Inventory</button>
-            <button type="button" class="btn btn-info" onclick="togglePanel('searchInventoryPanel')">Search
-                Inventory</button>
+            <button type="button" class="btn btn-primary" onclick="togglePanel('viewInventoryPanel')">View All Inventory</button>
+            <button type="button" class="btn btn-success" onclick="togglePanel('createInventoryPanel')">Create Inventory</button>
+            <button type="button" class="btn btn-info" onclick="togglePanel('searchInventoryPanel')">Search Inventory</button>
         </div>
     </div>
 
@@ -72,7 +71,7 @@
             </div>
             <div class="form-group">
                 <label for="itemPrice">Price Per Item</label>
-                <input type="number" class="form-control" id="itemPrice" placeholder="Enter price per item">
+                <input type="number" class="form-control" id="itemPrice" placeholder="Enter price per item" step="0.01">
             </div>
             <button type="submit" class="btn btn-success">Create</button>
         </form>

@@ -41,6 +41,7 @@ exports.createNewInventoryItem = async (req, res) => {
         const savedItem = await newItem.save();
         res.status(201).json(savedItem);
     } catch (error) {
+        console.error("Error creating inventory item:", error);
         res.status(500).json("Error creating inventory item.");
     }
 };

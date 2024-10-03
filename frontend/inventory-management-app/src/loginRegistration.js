@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateNavbar();
         });
     }
-
+    //NOTE: instead of showing error when issue registration or login should show prompt to fix entrys instead of show alert
     if(registrationForm) { //allow for users to register account
         registrationForm.addEventListener('submit', function(event) {
             event.preventDefault();
