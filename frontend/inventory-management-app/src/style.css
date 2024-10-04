@@ -25,3 +25,13 @@
     border-radius: 10px;
     background-color: #f9f9f9;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    /* margin-top: 5px; */
+    display: none; 
+    margin-bottom: 5px;
+}
+
+

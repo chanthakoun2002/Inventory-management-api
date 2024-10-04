@@ -1,11 +1,16 @@
 const API_BASE_URL = "http://localhost:3001/inventory-api";
 
+
 function handleResponse(response) {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+        return response.json().then(errorData => {
+            const error = new Error(errorData.message || 'HTTP error');
+            error.status = response.status;
+            throw error;
+        });
     }
-    return response.json();
-  }
+    return response.json(); 
+}
 
 
 function loginUser(credentials) {
@@ -20,7 +25,7 @@ function loginUser(credentials) {
     .then(data => {
         if (data.token) {
             sessionStorage.setItem('authToken', data.token); //this store's the token after login to use
-            console.log("Token retrieved from sessionStorage:", token);//for debugging to check if token has been given correctly
+            console.log("Token retrieved from sessionStorage:", sessionStorage.getItem('authToken'));//for debugging to check if token has been given correctly
             return data;
         }
         throw new Error('Token was not provided');

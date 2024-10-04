@@ -68,20 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const newOrder = {
             customer,
-            inventoryItem,
+            inventoryItem, //this is refereced to inventory data...  REQUIRED!
             quantity,
             orderDetails,
             totalPrice:parseFloat(totalPrice)
         }
 
-        const testOrder = {
-            customer: "fred jones",
-            inventoryItem: "6660e44ec2776289efa4b188",
-            quantity: 10,
-            status: "Pending",
-            totalPrice: 9.9
-        };
-        console.log('Test Order Data:', testOrder);
+        // const testOrder = {
+        //     customer: "fred jones",
+        //     inventoryItem: "6660e44ec2776289efa4b188",
+        //     quantity: 10,
+        //     status: "Pending",
+        //     totalPrice: 9.9
+        // };
+        // console.log('Test Order Data:', testOrder);
 
         // New Item sent to server
         createOrder(newOrder) 
