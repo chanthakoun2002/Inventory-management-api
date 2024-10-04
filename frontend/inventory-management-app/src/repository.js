@@ -124,7 +124,45 @@ function getItemByName(itemName) {
     });
 }
 
+function getCustOrders() {
+    const token = sessionStorage.getItem('authToken');
 
-export {loginUser, registerUser,logoutUser, 
-    getInventoryItems, createInventoryItem, getItemByName};
+    return fetch(`${API_BASE_URL}/orders`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error fetching inventory items:", error);
+        throw error;
+    });
+}
+
+function createOrder(orderData) {
+    const token = sessionStorage.getItem('authToken');
+
+    console.log("Token used for request:", token);  // Debugging token
+    console.log("order data sent to API:", orderData);
+
+    return fetch(`${API_BASE_URL}/orders`, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData)
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error creating order:", error);
+        throw error;
+    });
+}
+
+
+export {loginUser, registerUser,logoutUser,
+     getInventoryItems, createInventoryItem, getItemByName,
+     getCustOrders, createOrder};
 
