@@ -76,6 +76,35 @@
             <button type="submit" class="btn btn-success">Create</button>
         </form>
     </div>
+    <!-- Inventory Item Edit/Delete Panel -->
+    <div id="editInventoryPanel" class="container panel-container" style="display:none;">
+        <h3>Edit Inventory Item</h3>
+        <form id="editInventoryForm">
+            <div class="form-group">
+                <label for="editItemName">Item Name</label>
+                <input type="text" class="form-control" id="editItemName">
+            </div>
+            <div class="form-group">
+                <label for="editItemQuantity">Quantity</label>
+                <input type="number" class="form-control" id="editItemQuantity">
+            </div>
+            <div class="form-group">
+                <label for="editItemLocation">Location</label>
+                <input type="text" class="form-control" id="editItemLocation">
+            </div>
+            <div class="form-group">
+                <label for="editItemDescription">Description</label>
+                <textarea class="form-control" id="editItemDescription"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="editItemPrice">Price Per Item</label>
+                <input type="number" class="form-control" id="editItemPrice" step="0.01">
+            </div>
+            <button type="submit" class="btn btn-success">Save Changes</button>
+            <button type="button" id="deleteItemButton" class="btn btn-danger">Delete Item</button>
+            <button type="button" class="btn btn-secondary" onclick="togglePanel('editInventoryPanel')">Cancel</button>
+        </form>
+    </div>
     <div id="searchInventoryPanel" class="container panel-container">
         <h3>Search Inventory</h3>
         <form id="searchInventoryForm">
@@ -92,6 +121,9 @@
         <div id="searchResults">
             <!-- Search results will be displayed here -->
         </div>
+        
+
+
     </div>
     <script type="module" src="./src/auth.js"></script>
     <script type="module" src="./src/inventory.js"></script>

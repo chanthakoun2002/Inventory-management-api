@@ -144,11 +144,42 @@ function getCustOrders() {
         throw error;
     });
 }
+function updateCustOrder(orderId) {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/orders/${encodeURIComponent(orderId)}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error updating inventory item by ID:", error);
+        throw error;
+    });
+}
+function getOrderById(orderId) {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/orders/${encodeURIComponent(orderId)}`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error fetching inventory item by ID:", error);
+        throw error;
+    });
+}
 
 function createOrder(orderData) {
     const token = sessionStorage.getItem('authToken');
 
-    console.log("Token used for request:", token);  // Debugging token
+    console.log("Token used for request:", token);  // Debugging token, remove later
     console.log("order data sent to API:", orderData);
 
     return fetch(`${API_BASE_URL}/orders`, {
@@ -166,8 +197,58 @@ function createOrder(orderData) {
     });
 }
 
+function getInventoryItemByID(itemId) {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/inventory/items/${encodeURIComponent(itemId)}`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error fetching inventory item by ID:", error);
+        throw error;
+    });
+}
+
+function deleteInventoryItem(itemId) {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/inventory/items/${encodeURIComponent(itemId)}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error deleting inventory item by ID:", error);
+        throw error;
+    });
+}
+
+function updateInventoryItem(itemId) {
+    const token = sessionStorage.getItem('authToken');
+
+    return fetch(`${API_BASE_URL}/inventory/items/${encodeURIComponent(itemId)}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+        }
+    })
+    .then(handleResponse)
+    .catch((error) => {
+        console.error("Error updating inventory item by ID:", error);
+        throw error;
+    });
+}
+
+
 
 export {loginUser, registerUser,logoutUser,
-     getInventoryItems, createInventoryItem, getItemByName,
-     getCustOrders, createOrder};
+     getInventoryItems, createInventoryItem, getItemByName, updateCustOrder, getOrderById,
+     getCustOrders, createOrder,deleteInventoryItem, getInventoryItemByID, updateInventoryItem};
 

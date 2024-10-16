@@ -24,7 +24,7 @@ mongoose.connect( process.env.MONGO_URI)
 //limit num times user allowed to request from server
 const limit = rateLimit({
     windowMs:  10 * 60 * 1000,
-    max: 20,
+    max: 60,
 });
 
 //middleware

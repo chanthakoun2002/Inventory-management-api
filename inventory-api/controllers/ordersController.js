@@ -1,6 +1,6 @@
 const Order = require('../models/orders');
 
-//get all orders
+// Create a new order
 exports.createOrder = async (req, res) => {
     try {
         const newOrder = new Order(req.body);
@@ -11,20 +11,22 @@ exports.createOrder = async (req, res) => {
     }
 };
 
-//get an order by id
+// Get all orders, populated with inventory item names
 exports.getAllOrders = async (req, res) => {
     try {
-        const orders = await Order.find();
+        // Populate the inventoryItem field with the name field from the Inventory model
+        const orders = await Order.find().populate('inventoryItem', 'name');
         res.json(orders);
     } catch (error) {
         res.status(500).json({ message: "Error retrieving orders", error: error.message });
     }
 };
 
-//create a new order
+// Get an order by ID, populated with inventory item name
 exports.getOrderById = async (req, res) => {
     try {
-        const order = await Order.findById(req.params.id).populate('inventoryItem');
+        // Populate the inventoryItem field with the name field from the Inventory model
+        const order = await Order.findById(req.params.id).populate('inventoryItem', 'name');
         if (!order) {
             return res.status(404).json({ message: "Order not found" });
         }
@@ -34,10 +36,10 @@ exports.getOrderById = async (req, res) => {
     }
 };
 
-//update order
+// Update an order
 exports.updateOrder = async (req, res) => {
     try {
-        const updatedOrder = await Order.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedOrder = await Order.findByIdAndUpdate(req.params.id, req.body, { new: true }).populate('inventoryItem', 'name');
         if (!updatedOrder) {
             return res.status(404).json({ message: "Order not found" });
         }
@@ -47,7 +49,7 @@ exports.updateOrder = async (req, res) => {
     }
 };
 
-//delete order
+// Delete an order
 exports.deleteOrder = async (req, res) => {
     try {
         const deletedOrder = await Order.findByIdAndDelete(req.params.id);

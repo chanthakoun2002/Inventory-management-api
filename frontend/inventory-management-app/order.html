@@ -58,8 +58,11 @@
                 <input type="text" class="form-control" id="customerName" placeholder="Enter customer name">
             </div>
             <div class="form-group">
-                <label for="inventoryItem">Inventory Item</label>
-                <input type="text" class="form-control" id="inventoryItem" placeholder="Enter inventory item ID">
+                <label for="inventoryItemSelect">Select Inventory Item</label>
+                <select class="form-control" id="inventoryItemSelect">
+                    <option value="">Select an inventory item...</option>
+                    <!-- item will be displayed here -->
+                </select>
             </div>
             <div class="form-group">
                 <label for="orderQuantity">Quantity</label>
@@ -77,8 +80,33 @@
             <button type="submit" class="btn btn-success">Create Order</button>
         </form>
     </div>
+    
+    <div id="editOrderPanel" class="container panel-container" style="display:none;">
+        <h3>Edit Order</h3>
+        <form id="editOrderForm">
+            <div class="form-group">
+                <label for="editCustomerName">Customer Name</label>
+                <input type="text" class="form-control" id="editCustomerName">
+            </div>
+            <div class="form-group">
+                <label for="editOrderQuantity">Quantity</label>
+                <input type="number" class="form-control" id="editOrderQuantity">
+            </div>
+            <div class="form-group">
+                <label for="editOrderStatus">Status</label>
+                <input type="text" class="form-control" id="editOrderStatus">
+            </div>
+            <div class="form-group">
+                <label for="editOrderDetails">Order Details</label>
+                <textarea class="form-control" id="editOrderDetails" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Save Changes</button>
+            <button type="button" id="deleteOrderButton" class="btn btn-danger">Delete Order</button>
+            <button type="button" class="btn btn-secondary" onclick="togglePanel('editOrderPanel')">Cancel</button>
+        </form>
+    </div>
 
-    <div id="searchOrdersPanel" class="container panel-container" style="display:none;">
+    <div id="searchOrdersPanel" class="container panel-container" style="display:block;">
         <h3>Search Orders</h3>
         <form id="searchOrdersForm">
             <div class="form-group">
@@ -86,7 +114,7 @@
                 <input type="text" class="form-control" id="searchOrderId" placeholder="Enter order ID">
             </div>
             <div class="form-group">
-                <label for="searchCustomerName">Search by Customer Name</label>
+                <label for="searchCustomerName">Or Search by Customer Name</label>
                 <input type="text" class="form-control" id="searchCustomerName" placeholder="Enter customer name">
             </div>
             <button type="submit" class="btn btn-info">Search</button>
